@@ -11,22 +11,22 @@ import java.util.Date;
 
 public class GameMgr {
 
-    private static ArrayList<Game> store = new ArrayList<>();
+    private static final ArrayList<Game> STORE = new ArrayList<>();
 
 
     //  Agrega un nuevo juego a la lista
 
     public static void create_new_game(String title, String description, Double price, Integer category_id) {
-        Integer game_id = store.size() + 1;
+        Integer game_id = STORE.size() + 1;
         Category category = CategoryMgr.get_category(category_id);
         Game game = new Game(title, description, price, category, game_id);
-        store.add(game);
+        STORE.add(game);
     }
 
     //  Retorna el juego
 
     public static Game get_game(Integer game_id) {
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getGame_id().equals(game_id)) {
                 return game;
             }
@@ -37,7 +37,7 @@ public class GameMgr {
     // Modifica atributos de un juego
 
     public static void update_game(String new_title, String new_description, Double new_price, Integer new_category_id, Integer game_id) {
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getGame_id().equals(game_id)) {
                 game.setTitle(new_title);
                 game.setDescription(new_description);
@@ -54,7 +54,7 @@ public class GameMgr {
 
     public static ArrayList<Game> game_category_filter(Integer category_id) {
         ArrayList<Game> category_game_list = new ArrayList<>();
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getCategory().getCate_id().equals(category_id)) {
                 category_game_list.add(game);
             }
@@ -65,14 +65,14 @@ public class GameMgr {
     //  Elimina un juego
 
     public static void delete_game(Integer game_id) {
-        store.removeIf(game -> game.getGame_id().equals(game_id));
+        STORE.removeIf(game -> game.getGame_id().equals(game_id));
     }
 
     //  Retorna rating de un juego
 
     public static Double get_game_rating(Integer game_id) {
         ArrayList<Integer> value_rating_list = new ArrayList<>();
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getGame_id().equals(game_id)) {
                 for (Rating rating : game.getGame_rating()) {
                     value_rating_list.add(rating.getValue());
@@ -83,7 +83,7 @@ public class GameMgr {
         for (Integer value : value_rating_list) {
             n = n + value;
         }
-        double promedio = 0.0;
+        double promedio;
         promedio = (double) n / value_rating_list.size();
 
         return promedio;
@@ -93,7 +93,7 @@ public class GameMgr {
 
     public static ArrayList<Game> rating_filter(Integer min_rating) {
         ArrayList<Game> rating_game_list = new ArrayList<>();
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (get_game_rating(game.getGame_id()) >= min_rating) {
                 rating_game_list.add(game);
             }
@@ -103,20 +103,18 @@ public class GameMgr {
     //  Crea review de un juego
 
     public static void review_game(Integer game_id, String review_title, String text) {
-        Integer review_id = get_game(game_id).getGame_reviews().size() + 1;
-        Date date = new Date();
-        Review review = new Review(review_title, date, text, review_id);
-        for (Game game : store) {
-            if (game.getGame_id().equals(game_id)) {
-                game.getGame_reviews().add(review);
-            }
+        try {
+            Review review = ReviewMgr.create_new_review(review_title, text);
+            get_game(game_id).getGame_reviews().add(review);
+        } catch (Exception e) {
+            System.out.println("Juego no existe");
         }
     }
 
     // Elimina review de juego
 
     public static void delete_game_review(Integer game_id, Integer review_id) {
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getGame_id().equals(game_id)) {
                 game.getGame_reviews().removeIf(review -> review.getReview_id().equals(review_id));
             }
@@ -124,7 +122,7 @@ public class GameMgr {
     }
 
     public static ArrayList<Review> get_reviews(Integer game_id) {
-        for (Game game : store) {
+        for (Game game : STORE) {
             if (game.getGame_id().equals(game_id)) {
                 return game.getGame_reviews();
             }
@@ -134,13 +132,15 @@ public class GameMgr {
     // Crea rating de un juego
 
     public static void rate_game(Integer game_id, Integer value) {
-        Integer rating_id = get_game(game_id).getGame_rating().size() + 1;
-        Date date = new Date();
-        Rating rating = new Rating(date, value, rating_id);
-        for (Game game : store) {
-            if (game.getGame_id().equals(game_id)) {
-                game.getGame_rating().add(rating);
-            }
+        try {
+            Rating rating = RatingMgr.create_new_rating(value);
+            get_game(game_id).getGame_rating().add(rating);
+        } catch (Exception e) {
+            System.out.println("Juego no existe");
         }
+    }
+
+    public static ArrayList<Game> stored_games() {
+        return STORE;
     }
 }

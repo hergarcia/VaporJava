@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 public class UserMgr {
 
-    private static ArrayList<User> store = new ArrayList<>();
+    private static final ArrayList<User> STORE = new ArrayList<>();
 
     public static void create_new_user(String username, String email, String password, Integer user_id) {
         User user = new User(username, email, password, user_id);
-        store.add(user);
+        STORE.add(user);
     }
 
     public static void update_user(String new_username, String new_email, String new_password, Integer user_id) {
-        for (User user : store) {
+        for (User user : STORE) {
             if (user.getUser_id().equals(user_id)) {
                 user.setUsername(new_username);
                 user.setPassword(new_password);
@@ -26,7 +26,7 @@ public class UserMgr {
     }
 
     public static void delete_user(Integer user_id) {
-        store.removeIf(user -> user.getUser_id().equals(user_id));
+        STORE.removeIf(user -> user.getUser_id().equals(user_id));
     }
 
 }

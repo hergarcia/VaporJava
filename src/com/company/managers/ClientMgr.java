@@ -8,16 +8,16 @@ import java.util.ArrayList;
 
 public class ClientMgr {
 
-    private static ArrayList<Client> store = new ArrayList<>();
+    private static final ArrayList<Client> STORE = new ArrayList<>();
 
 
     public static void create_new_client(String username, String email, String password, Integer user_id) {
         Client client = new Client(username, email, password, user_id);
-        store.add(client);
+        STORE.add(client);
 
     }
     public static ArrayList<Game>  get_purchased_games(Integer user_id) {
-        for (User user : store) {
+        for (User user : STORE) {
             if (user.getUser_id().equals(user_id)) {
                 return user.getPurchased_games();
             }
@@ -26,7 +26,7 @@ public class ClientMgr {
     }
 
     public static void add_game_to_library(Integer user_id, Integer game_id) {
-        for (User user : store) {
+        for (User user : STORE) {
             if (user.getUser_id().equals(user_id)) {
                 user.getPurchased_games().add(GameMgr.get_game(game_id));
             }
@@ -34,7 +34,7 @@ public class ClientMgr {
     }
 
     public static ArrayList<Game> purchased_games (Integer user_id) {
-        for (User user : store) {
+        for (User user : STORE) {
             if (user.getUser_id().equals(user_id)) {
                 return user.getPurchased_games();
             }

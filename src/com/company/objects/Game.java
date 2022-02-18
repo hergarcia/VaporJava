@@ -9,8 +9,8 @@ public class Game {
     private Double price;
     private Category category;
     private Integer game_id;
-    private ArrayList<Review> game_reviews;
-    private ArrayList<Rating> game_rating;
+    private ArrayList<Review> game_reviews = new ArrayList<>();
+    private ArrayList<Rating> game_rating = new ArrayList<>();
 
     public Game(String title, String description, Double price, Category category, Integer game_id) {
         this.title = title;

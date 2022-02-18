@@ -10,14 +10,14 @@ import java.util.Date;
 
 public class PurchaseMgr  {
 
-    private static ArrayList<Purchase> store = new ArrayList<>();
+    private static final ArrayList<Purchase> STORE = new ArrayList<>();
 
 
 
     public static void create_new_purchase(User buyer, Game game, Double price, Integer purchase_id) {
         Date date = new Date();
         Purchase purchase = new Purchase(buyer, game, price, date, purchase_id);
-        store.add(purchase);
+        STORE.add(purchase);
         ClientMgr.add_game_to_library(buyer.getUser_id(), game.getGame_id());
     }
 }
