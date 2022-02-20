@@ -1,6 +1,5 @@
 package com.company.managers;
 
-import com.company.objects.Client;
 import com.company.objects.Game;
 import com.company.objects.Purchase;
 import com.company.objects.User;
@@ -19,5 +18,9 @@ public class PurchaseMgr  {
         Purchase purchase = new Purchase(buyer, game, price, date, purchase_id);
         STORE.add(purchase);
         ClientMgr.add_game_to_library(buyer.getUser_id(), game.getGame_id());
+    }
+
+    public static ArrayList<Purchase> stored_purchases() {
+        return STORE;
     }
 }

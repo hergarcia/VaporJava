@@ -50,7 +50,7 @@ public class GameMgr {
             }
         }
     }
-    //  Retorna todos los juegos asociados a esa categoria
+    //  Retorna una lista con todos los juegos asociados a la categoria proporcionada
 
     public static ArrayList<Game> game_category_filter(Integer category_id) {
         ArrayList<Game> category_game_list = new ArrayList<>();
