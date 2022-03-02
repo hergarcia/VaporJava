@@ -1,17 +1,6 @@
 package com.company.objects;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.UnsupportedEncodingException;
-import java.lang.invoke.MethodHandles;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class User {
 
@@ -19,7 +8,6 @@ public class User {
     protected String email;
     protected String password;
     protected Integer user_id;
-
     private ArrayList<Game> purchased_games = new ArrayList<>();
 
 

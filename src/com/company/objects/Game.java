@@ -1,22 +1,26 @@
 package com.company.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Comparable {
 
     private String title;
     private String description;
     private Double price;
     private Category category;
+    private Double rating;
     private Integer game_id;
     private ArrayList<Review> game_reviews = new ArrayList<>();
-    private ArrayList<Rating> game_rating = new ArrayList<>();
+    private ArrayList<Rating> game_ratings = new ArrayList<>();
 
-    public Game(String title, String description, Double price, Category category, Integer game_id) {
+    public Game(String title, String description, Double price, Category category, Double rating, Integer game_id) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.category = category;
+        this.rating = rating;
         this.game_id = game_id;
     }
 
@@ -52,6 +56,14 @@ public class Game {
         this.category = category;
     }
 
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
     public Integer getGame_id() {
         return game_id;
     }
@@ -68,11 +80,23 @@ public class Game {
         this.game_reviews = game_reviews;
     }
 
-    public ArrayList<Rating> getGame_rating() {
-        return game_rating;
+    public ArrayList<Rating> getGame_ratings() {
+        return game_ratings;
     }
 
-    public void setGame_rating(ArrayList<Rating> game_rating) {
-        this.game_rating = game_rating;
+    public void setGame_ratings(ArrayList<Rating> game_ratings) {
+        this.game_ratings = game_ratings;
+    }
+
+    @Override
+    public String toString() {
+        return "Game [title=" + title + ", description=" + description + ", price=" + price + ", category=" + category + ", rating=" + rating + "]";
+    }
+
+    @Override
+    public int compareTo(@NotNull Object o) {
+        Game otro = (Game) o;
+
+        return this.getRating().compareTo(otro.getRating());
     }
 }
