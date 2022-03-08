@@ -6,13 +6,13 @@ public class Rating {
 
     private Date date;
     private Integer value;
-    private Integer rating_id;
+    private Integer ratingId;
 
 
-    public Rating(Date date, Integer value, Integer rating_id) {
+    public Rating(Date date, Integer value, Integer ratingId) {
         this.date = date;
         this.value = value;
-        this.rating_id = rating_id;
+        this.ratingId = ratingId;
     }
 
     public Date getDate() {
@@ -31,11 +31,11 @@ public class Rating {
         this.value = value;
     }
 
-    public Integer getRating_id() {
-        return rating_id;
+    public Integer getRatingId() {
+        return ratingId;
     }
 
-    public void setRating_id(Integer rating_id) {
-        this.rating_id = rating_id;
+    public void setRatingId(Integer ratingId) {
+        this.ratingId = ratingId;
     }
 }

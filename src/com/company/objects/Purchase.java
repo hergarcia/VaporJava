@@ -8,14 +8,14 @@ public class Purchase {
     private Game game;
     private Double price;
     private Date date;
-    private Integer purchase_id;
+    private Integer purchaseId;
 
-    public Purchase(User buyer, Game game, Double price, Date date, Integer purchase_id) {
+    public Purchase(User buyer, Game game, Double price, Date date, Integer purchaseId) {
         this.buyer = buyer;
         this.game = game;
         this.price = price;
         this.date = date;
-        this.purchase_id = purchase_id;
+        this.purchaseId = purchaseId;
     }
 
     public User getBuyer() {
@@ -50,11 +50,11 @@ public class Purchase {
         this.date = date;
     }
 
-    public Integer getPurchase_id() {
-        return purchase_id;
+    public Integer getPurchaseId() {
+        return purchaseId;
     }
 
-    public void setPurchase_id(Integer id) {
-        this.purchase_id = id;
+    public void setPurchaseId(Integer id) {
+        this.purchaseId = id;
     }
 }

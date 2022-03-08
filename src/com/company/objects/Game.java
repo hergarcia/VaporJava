@@ -11,17 +11,17 @@ public class Game implements Comparable {
     private Double price;
     private Category category;
     private Double rating;
-    private Integer game_id;
-    private ArrayList<Review> game_reviews = new ArrayList<>();
-    private ArrayList<Rating> game_ratings = new ArrayList<>();
+    private Integer gameId;
+    private ArrayList<Review> gameReviews = new ArrayList<>();
+    private ArrayList<Rating> gameRatings = new ArrayList<>();
 
-    public Game(String title, String description, Double price, Category category, Double rating, Integer game_id) {
+    public Game(String title, String description, Double price, Category category, Double rating, Integer gameId) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.category = category;
         this.rating = rating;
-        this.game_id = game_id;
+        this.gameId = gameId;
     }
 
     public String getTitle() {
@@ -64,28 +64,28 @@ public class Game implements Comparable {
         this.rating = rating;
     }
 
-    public Integer getGame_id() {
-        return game_id;
+    public Integer getGameId() {
+        return gameId;
     }
 
-    public void setGame_id(Integer game_id) {
-        this.game_id = game_id;
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
     }
 
-    public ArrayList<Review> getGame_reviews() {
-        return game_reviews;
+    public ArrayList<Review> getGameReviews() {
+        return gameReviews;
     }
 
-    public void setGame_reviews(ArrayList<Review> game_reviews) {
-        this.game_reviews = game_reviews;
+    public void setGameReviews(ArrayList<Review> gameReviews) {
+        this.gameReviews = gameReviews;
     }
 
-    public ArrayList<Rating> getGame_ratings() {
-        return game_ratings;
+    public ArrayList<Rating> getGameRatings() {
+        return gameRatings;
     }
 
-    public void setGame_ratings(ArrayList<Rating> game_ratings) {
-        this.game_ratings = game_ratings;
+    public void setGameRatings(ArrayList<Rating> gameRatings) {
+        this.gameRatings = gameRatings;
     }
 
     @Override

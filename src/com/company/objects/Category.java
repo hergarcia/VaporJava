@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 public class Category {
 
-    private String cate_name;
-    private Integer cate_id;
+    private String cateName;
+    private Integer cateId;
 
-    public Category(String cate_name, Integer cate_id) {
-        this.cate_name = cate_name;
-        this.cate_id = cate_id;
+    public Category(String cateName, Integer cateId) {
+        this.cateName = cateName;
+        this.cateId = cateId;
     }
 
-    public String getCate_name() {
-        return cate_name;
+    public String getCateName() {
+        return cateName;
     }
 
-    public void setCate_name(String cate_name) {
-        this.cate_name = cate_name;
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
     }
 
-    public Integer getCate_id() {
-        return cate_id;
+    public Integer getCateId() {
+        return cateId;
     }
 
-    public void setCate_id(Integer cate_id) {
-        this.cate_id = cate_id;
+    public void setCateId(Integer cateId) {
+        this.cateId = cateId;
     }
 
 

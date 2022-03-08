@@ -8,48 +8,48 @@ import java.util.Date;
 
 public class ReviewMgr {
 
-    private static final ArrayList<Review> STORE = new ArrayList<>();
+    private static ArrayList<Review> store = new ArrayList<>();
 
-    public static Review create_new_review(String review_title, String text) {
+    public static Review createNewReview(String reviewTitle, String text) {
         Date date = new Date();
-        Integer review_id = 1;
-        ArrayList<Integer> review_id_list = new ArrayList<>();
+        Integer reviewId = 1;
+        ArrayList<Integer> reviewIdList = new ArrayList<>();
 
-        for (Review review : STORE) {
-            review_id_list.add(review.getReview_id());
+        for (Review review : store) {
+            reviewIdList.add(review.getReviewId());
         }
-        Collections.sort(review_id_list);
-        for (Integer id : review_id_list) {
-            if (review_id.equals(id)) {
-                review_id ++;
+        Collections.sort(reviewIdList);
+        for (Integer id : reviewIdList) {
+            if (reviewId.equals(id)) {
+                reviewId ++;
             } else {
                 break;
             }
         }
-        Review review = new Review(review_title, date, text, review_id);
-        STORE.add(review);
+        Review review = new Review(reviewTitle, date, text, reviewId);
+        store.add(review);
         return review;
     }
 
-    public static Review get_review (Integer review_id) {
-        for (Review review : STORE) {
-            if (review.getReview_id().equals(review_id)) {
+    public static Review getReview (Integer reviewId) {
+        for (Review review : store) {
+            if (review.getReviewId().equals(reviewId)) {
                 return review;
             }
         }
         return null;
     }
 
-    public static void update_review(String new_review_title, String new_text, Integer review_id){
-        Review review = get_review(review_id);
+    public static void updateReview(String newReviewTitle, String newText, Integer reviewId){
+        Review review = getReview(reviewId);
         assert review != null;
         Date date = new Date();
-        review.setReview_title(new_review_title);
-        review.setText(new_text);
+        review.setReviewTitle(newReviewTitle);
+        review.setText(newText);
         review.setDate(date);
     }
 
-    public static ArrayList<Review> stored_reviews() {
-        return STORE;
+    public static ArrayList<Review> storedReviews() {
+        return store;
     }
 }

@@ -10,48 +10,48 @@ import java.util.Date;
 
 public class PurchaseMgr  {
 
-    private static final ArrayList<Purchase> STORE = new ArrayList<>();
+    private static ArrayList<Purchase> store = new ArrayList<>();
 
     public static void create_new_purchase(User buyer, Game game, Double price) {
         Date date = new Date();
-        Integer purchase_id = 1;
-        ArrayList<Integer> purchase_id_list = new ArrayList<>();
-        for (Purchase purchase : STORE) {
-            purchase_id_list.add(purchase.getPurchase_id());
+        Integer purchaseId = 1;
+        ArrayList<Integer> purchaseIdList = new ArrayList<>();
+        for (Purchase purchase : store) {
+            purchaseIdList.add(purchase.getPurchaseId());
         }
-        Collections.sort(purchase_id_list);
-        for (Integer id : purchase_id_list) {
-            if (purchase_id.equals(id)) {
-                purchase_id ++;
+        Collections.sort(purchaseIdList);
+        for (Integer id : purchaseIdList) {
+            if (purchaseId.equals(id)) {
+                purchaseId ++;
             } else {
                 break;
             }
         }
-        Purchase purchase = new Purchase(buyer, game, price, date, purchase_id);
-        STORE.add(purchase);
-        UserMgr.add_game_to_library(buyer.getUser_id(), game.getGame_id());
+        Purchase purchase = new Purchase(buyer, game, price, date, purchaseId);
+        store.add(purchase);
+        UserMgr.addGameToLibrary(buyer.getUserId(), game.getGameId());
     }
 
-    public static Purchase get_purchase (Integer purchase_id) {
-        for (Purchase purchase : STORE) {
-            if (purchase.getPurchase_id().equals(purchase_id)) {
+    public static Purchase getPurchase (Integer purchaseId) {
+        for (Purchase purchase : store) {
+            if (purchase.getPurchaseId().equals(purchaseId)) {
                 return purchase;
             }
         }
         return null;
     }
 
-    public static void update_purchase(User new_buyer, Game new_game, Double new_price, Integer purchase_id) {
-        Purchase purchase = get_purchase(purchase_id);
+    public static void updatePurchase(User newBuyer, Game newGame, Double newPrice, Integer purchaseId) {
+        Purchase purchase = getPurchase(purchaseId);
         assert purchase != null;
         Date date = new Date();
-        purchase.setBuyer(new_buyer);
-        purchase.setGame(new_game);
-        purchase.setPrice(new_price);
+        purchase.setBuyer(newBuyer);
+        purchase.setGame(newGame);
+        purchase.setPrice(newPrice);
         purchase.setDate(date);
     }
 
-    public static ArrayList<Purchase> stored_purchases() {
-        return STORE;
+    public static ArrayList<Purchase> storedPurchases() {
+        return store;
     }
 }

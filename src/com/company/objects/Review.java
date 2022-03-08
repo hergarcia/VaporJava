@@ -4,24 +4,24 @@ import java.util.Date;
 
 public class Review {
 
-    private String review_title;
+    private String reviewTitle;
     private Date date;
     private String text;
-    private Integer review_id;
+    private Integer reviewId;
 
-    public Review(String review_title, Date date, String text, Integer review_id) {
-        this.review_title = review_title;
+    public Review(String reviewTitle, Date date, String text, Integer reviewId) {
+        this.reviewTitle = reviewTitle;
         this.date = date;
         this.text = text;
-        this.review_id = review_id;
+        this.reviewId = reviewId;
     }
 
-    public String getReview_title() {
-        return review_title;
+    public String getReviewTitle() {
+        return reviewTitle;
     }
 
-    public void setReview_title(String review_title) {
-        this.review_title = review_title;
+    public void setReviewTitle(String reviewTitle) {
+        this.reviewTitle = reviewTitle;
     }
 
     public Date getDate() {
@@ -40,11 +40,11 @@ public class Review {
         this.text = text;
     }
 
-    public Integer getReview_id() {
-        return review_id;
+    public Integer getReviewId() {
+        return reviewId;
     }
 
-    public void setReview_id(Integer review_id) {
-        this.review_id = review_id;
+    public void setReviewId(Integer reviewId) {
+        this.reviewId = reviewId;
     }
 }

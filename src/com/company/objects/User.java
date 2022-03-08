@@ -7,15 +7,15 @@ public class User {
     protected String username;
     protected String email;
     protected String password;
-    protected Integer user_id;
-    private ArrayList<Game> purchased_games = new ArrayList<>();
+    protected Integer userId;
+    private ArrayList<Game> purchasedGames = new ArrayList<>();
 
 
-    public User(String username, String email, String password, Integer user_id) {
+    public User(String username, String email, String password, Integer userId) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -42,20 +42,20 @@ public class User {
         this.password = password;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public ArrayList<Game> getPurchased_games() {
-        return purchased_games;
+    public ArrayList<Game> getPurchasedGames() {
+        return purchasedGames;
     }
 
-    public void setPurchased_games(ArrayList<Game> purchased_games) {
-        this.purchased_games = purchased_games;
+    public void setPurchasedGames(ArrayList<Game> purchasedGames) {
+        this.purchasedGames = purchasedGames;
     }
 
 }

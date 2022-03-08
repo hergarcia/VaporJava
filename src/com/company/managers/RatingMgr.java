@@ -8,47 +8,47 @@ import java.util.Date;
 
 public class RatingMgr {
 
-    private static final ArrayList<Rating> STORE =new ArrayList<>();
+    private static ArrayList<Rating> store =new ArrayList<>();
 
-    public static Rating create_new_rating(Integer value) {
+    public static Rating createNewRating(Integer value) {
         Date date = new Date();
-        Integer rating_id = 1;
-        ArrayList<Integer> rating_id_list = new ArrayList<>();
+        Integer ratingId = 1;
+        ArrayList<Integer> ratingIdList = new ArrayList<>();
 
-        for (Rating rating : STORE) {
-            rating_id_list.add(rating.getRating_id());
+        for (Rating rating : store) {
+            ratingIdList.add(rating.getRatingId());
         }
-        Collections.sort(rating_id_list);
-        for (Integer id : rating_id_list) {
-            if (rating_id.equals(id)) {
-                rating_id ++;
+        Collections.sort(ratingIdList);
+        for (Integer id : ratingIdList) {
+            if (ratingId.equals(id)) {
+                ratingId ++;
             } else {
                 break;
             }
         }
-        Rating rating = new Rating(date, value, rating_id);
-        STORE.add(rating);
+        Rating rating = new Rating(date, value, ratingId);
+        store.add(rating);
         return rating;
     }
 
-    public static Rating get_rating (Integer rating_id) {
-        for (Rating rating : STORE) {
-            if (rating.getRating_id().equals(rating_id)) {
+    public static Rating getRating (Integer ratingId) {
+        for (Rating rating : store) {
+            if (rating.getRatingId().equals(ratingId)) {
                 return rating;
             }
         }
         return null;
     }
 
-    public static void update_rating(Integer new_value, Integer rating_id){
-        Rating rating = get_rating(rating_id);
+    public static void updateRating(Integer newValue, Integer ratingId){
+        Rating rating = getRating(ratingId);
         assert rating != null;
         Date date = new Date();
-        rating.setValue(new_value);
+        rating.setValue(newValue);
         rating.setDate(date);
     }
 
-    public static ArrayList<Rating> stored_ratings() {
-        return STORE;
+    public static ArrayList<Rating> storedRatings() {
+        return store;
     }
 }
